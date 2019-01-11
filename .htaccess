@@ -1,0 +1,34 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+Options -Indexes
+Options +FollowSymLinks
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteBase /___misc/tcva/
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule .* %{REQUEST_FILENAME} [L]
+
+
+
+RewriteRule .* 404 [L,R]
+
+</IfModule>
+
+AuthUserFile /index.html .htpasswdx
+AuthName "Protected area"
+AuthType Basic
+
+<Limit GET POST>
+require valid-user
+</Limit>
+
+ErrorDocument 401 "<p>Access to this page is restricted.</p>"
