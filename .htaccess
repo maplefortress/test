@@ -10,8 +10,7 @@ DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
 
-RewriteEngine On
-RewriteBase /___misc/tcva/
+
 
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -23,7 +22,7 @@ RewriteRule .* 404 [L,R]
 
 </IfModule>
 
-AuthUserFile /index.html .htpasswdx
+AuthUserFile / .htpasswdx
 AuthName "Protected area"
 AuthType Basic
 
